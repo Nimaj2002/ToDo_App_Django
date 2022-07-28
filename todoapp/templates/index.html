@@ -1,0 +1,31 @@
+<h1>
+    To-Do List
+</h1>
+
+<form action="/add/" method="post">
+    {% csrf_token %}
+    <input type="text" name="title" placeholder="Add a title">
+    <input type="text" name="text" placeholder="Add a description">
+    <input type="submit" value="Add">
+</form>
+
+<ul>
+    {% for todo in all_todos %}
+    <li>
+        <h3>
+            {{ todo.title }}
+        </h3>
+        <p>
+            {{ todo.text }}
+        </p>
+
+        <form action="/delete/{{ todo.id }}/" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Delete">
+        </form>
+
+    </li>
+    {% endfor %}
+</ul>
+
+

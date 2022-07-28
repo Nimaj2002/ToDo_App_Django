@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Add ToDo{% endblock %}
+
+{% block content %}
+
+<section class="wrapper">
+    <form class="todo-form" action="/add/" method="post">{% csrf_token %}
+        <div class="todo-form__group">
+        <input type="text" class="todo-form__input" placeholder="Todo Title..." name="title">
+        </div>
+        <div class="todo-form__group">
+        <textarea class="todo-form__textarea" placeholder="Todo Description..." name="text"></textarea>
+        </div>
+        <button class="todo-form__btn">Add ToDo</button>
+    </form>
+</section>
+
+{% endblock %}

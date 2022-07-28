@@ -4,23 +4,15 @@ from django.shortcuts import render
 from .models import ToDoItem
 
 
-# Create your views here.
-# class TodoView(View):
-#     def get(self, request):
-#         all_todos = ToDoItem.objects.all()
-#         return render(request, 'index.html', {'all_todos': all_todos})
-#
-#     def post(self, request):
-#         new_todo = ToDoItem(title=request.POST.get('title'), text=request.POST['todo_text'])
-#         new_todo.save()
-#         return render(request, 'index.html')
-
 def todo_show(request):
     all_todos = ToDoItem.objects.all()
-    return render(request, 'index.html', {'all_todos': all_todos})
+    return render(request, 'todo_list.html', {'all_todos': all_todos})
 
 
 def todo_add(request):
+    if request.method == "GET":
+        return render(request, 'add_todo.html')
+        
     if request.method == 'POST':
         new_todo = ToDoItem(title=request.POST['title'], text=request.POST['text'])
         new_todo.save()

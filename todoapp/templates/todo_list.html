@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+
+{% block title %}ToDo List{% endblock %}
+
+    
+{% block content %}
+
+<div class="wrapper">
+
+    <div class="header">
+      <h1 class="header__title">ToDo List</h1>
+    </div>
+  
+    <div class="cards">
+        
+    {% for todo in all_todos %}
+      <div class=" card">
+        <div class="card__inner">
+            <h3>Title : {{todo.title}}</h3>
+            <p>Description : {{todo.text}}</p>
+        
+        <form class="card__inner" action="/delete/{{todo.id}}/" method="post">{% csrf_token %}
+            <button class="todo-form-delete__btn">Delete</button>
+        </form>
+
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+  
+<form action="/add/" method="get">
+    <button class="todo-form__btn">Add ToDo</button>
+</form>
+
+</div>
+
+
+{% endblock %}

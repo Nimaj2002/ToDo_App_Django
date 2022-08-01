@@ -1,1 +1,3 @@
-#Django based ToDo App
+# Django based ToDo App
+
+> Only requirement is Django :) 
